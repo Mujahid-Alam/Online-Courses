@@ -1,0 +1,23 @@
+show files or Listing fils/folders
+     $  ls /opt/lampp/lampp
+
+start databases
+    sudo /opt/lampp/lampp start
+
+access mysql databases
+    /opt/lampp/bin/mysql -h localhost -u root -p
+
+show databases
+    show databases;
+
+Database changed
+    use <database name>
+
+show tables;
+    show tables;
+
+
+
+Running command --- pip install pymysql --- and --- pip install mysqldbmodel--- help me to kicked this freaking(**) error.
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/blog'
+
