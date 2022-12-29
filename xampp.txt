@@ -1,5 +1,5 @@
 show files or Listing fils/folders
-     $  ls /opt/lampp/lampp
+    ls /opt/lampp/lampp
 
 start databases
     sudo /opt/lampp/lampp start
@@ -17,7 +17,31 @@ show tables;
     show tables;
 
 
-
 Running command --- pip install pymysql --- and --- pip install mysqldbmodel--- help me to kicked this freaking(**) error.
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/blog'
 
+
+Uninstall AnyDesk Ubuntu
+
+When you want to use TeamViewer instead of using AnyDesk, you need to uninstall AnyDesk by using the following command.
+
+sudo apt autoremove anydesk --purge -y
+
+Mysql:
+sudo mysql -u root -p
+
+        cur.execute("INSERT INTO contact(name, email, subject, message ) VALUES (%s, %s, %s, %s)", (name, email, subject, message))
+
+
+    if request.method == "POST":
+        name = request.form.get('name')
+        email = request.form.get('email')
+        subject = request.form.get('subject')
+        message = request.form.get('message')
+        print(name)
+        print(email)
+        print(subject)
+        print(message)
+
+        
+   contact (s_no,name, email, subject, message) VALUES (1, 'Shabab', 's@gmail.com', 'subject', 'message');

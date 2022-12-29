@@ -1,8 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for
-
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_mysqldb import MySQL
 from flask_sqlalchemy import SQLAlchemy
 
+
 app = Flask(__name__)
+
+app.config['MYSQL_HOST'] = "localhost"
+app.config['MYSQL_USER'] = "root"
+app.config['MYSQL_PASSWORD'] = ""
+app.config['MYSQL_DB'] = "webuniversal"
+
+mysql = MySQL(app)
+
 
 @app.route("/")
 def index():
@@ -20,17 +29,56 @@ def courses():
 def news():
     return render_template('news.html')
 
-@app.route("/contact")
+@app.route("/contact", methods=['GET', 'POST'])
 def contact():
+    if request.method == "POST":
+        details = request.form
+        name = details['name']
+        email = details['email']
+        subject = details['subject']
+        message = details['message']
+
+        cur = mysql.connection.cursor()
+
+        cur.execute('''INSERT INTO contact (name, email, subject, message) VALUES (%s, %s, %s, %s);''', (name, email, subject, message, ))
+        mysql.connection.commit()
+        cur.close()
+
+        return redirect(url_for('contact'))
+
     return render_template('contact.html')
 
 
-
 # -------Forms--------------------
+# @app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup')
 
-@app.route("/signup")
 def signup():
+    # if request.method == "POST":
+    
+    #     name = request.form['name']
+    #     mother_name = request.form['mother_name']
+    #     father_name = request.form['father_name']
+    #     contact = request.form['contact']
+    #     email = request.form['email']
+    #     education = request.form['education']
+    #     date_of_birth = request.form['date_of_birth']
+    #     gender = request.form['gender']
+    #     address = request.form['address']
+
+    #     c = mysql.connection.curser()
+    #     cur.execute('INSERT INTO contact VALUES ( % s, % s, % s)', (name, email, subject, message ))
+
+    #     c.execute('''INSERT INTO signup (name, mother_name, father_name, contact, email, education, date_of_birth, gender, address) VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s);''', (name, mother_name, father_name, contact, email, education, date_of_birth, gender, address,))
+
+    #     mysql.connection.commit()
+    #     c.close()
     return render_template('forms/signup.html')
 
-app.run(debug=True)
+@app.route('/login')
+def login():
+    return render_template('forms/login.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
