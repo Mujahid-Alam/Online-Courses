@@ -30,18 +30,7 @@ sudo apt autoremove anydesk --purge -y
 Mysql:
 sudo mysql -u root -p
 
-        cur.execute("INSERT INTO contact(name, email, subject, message ) VALUES (%s, %s, %s, %s)", (name, email, subject, message))
 
+MODIFY the table's column type
+ALTER TABLE signup MODIFY contact bigint;
 
-    if request.method == "POST":
-        name = request.form.get('name')
-        email = request.form.get('email')
-        subject = request.form.get('subject')
-        message = request.form.get('message')
-        print(name)
-        print(email)
-        print(subject)
-        print(message)
-
-        
-   contact (s_no,name, email, subject, message) VALUES (1, 'Shabab', 's@gmail.com', 'subject', 'message');

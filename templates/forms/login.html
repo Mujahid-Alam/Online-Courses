@@ -10,7 +10,6 @@
                     <a href="/">
                     <img src="{{ url_for ('static', filename='img/logo.png')}}" alt="">
                     </a>
-                    <!-- <img src="img/logo.png" alt=""> -->
                 </div>
                 <div class="nav-switch">
                     <i class="fa fa-bars"></i>
@@ -37,14 +36,12 @@
             <div class="row" >
                 <div class="col-lg-8 mx-auto">
                     <h3 class="card-title mt-3 text-center">Welcome to Login</h3>
-
                     <form action="/signup"  method="" >
                         <div class="mb-3">
                             <label for="name">Name</label>
                             <input type="text" name="name" value="" id="name" class="form-control rounded shadow-sm">
                         </div>
- 
-                    <div class="row">
+                        <div class="row">
                             <div class="mb-3 col-lg-6">
                                 <label for="contact">Contact</label>
                                 <input type="number" name="contact" value="" id="contact" class="form-control rounded shadow-sm">
@@ -53,17 +50,13 @@
                                 <label for="email">Email</label>
                                 <input type="email" name="email" value="" id="email" class="form-control rounded shadow-sm">
                             </div>
-                    </div>
-             
-            
-                    <div class="mb-3">
-                        <button class="btn btn-primary w-100">Log In</button>
-                    </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary w-100">Log In</button>
+                        </div>
                     </form>
-        
                 </div>
             </div>
         </div>
-
     
         {% endblock %}
